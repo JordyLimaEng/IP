@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1445649057 source:f:\ufpb - estudos\engenharia da computa«√o\ip\lista 3\jogodaadvinhacao\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<locale.h>
+

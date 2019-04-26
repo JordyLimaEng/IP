@@ -1,0 +1,493 @@
+Q1
+
+#include <stdio.h>
+#include <stdlib.h>
+
+float MediaAluno (float, float, float, float);
+
+int main()
+{
+ float nota1,nota2,nota3,nota4, media;
+
+ printf("\nInforme as quatro notas do aluno \n-> ");
+ scanf("%f %f %f %f", &nota1, &nota2, &nota3, &nota4);
+
+ printf("\nMedia do aluno eh %.2f\n", MediaAluno(nota1,nota2,nota3,nota4));
+
+ media = MediaAluno(nota1,nota2,nota3,nota4);
+
+   if(media >= 7){
+    printf("\nAluno aprovado\n");
+
+ }else{
+    printf("\nAluno reprovado\n");
+
+ }
+
+ return 0;
+}
+
+float MediaAluno(float n1, float n2, float n3, float n4){
+ float media;
+
+ media = (n1 + n2 + n3 + n4)/4;
+
+return media;
+}
+
+
+
+
+
+
+
+
+Q2
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#define tam 10
+
+void MULT3 (int []);
+void DIVISOR8(int []);
+
+int main()
+{
+    int numeros[tam]={0};
+    int i;
+
+
+    for(i=0;i<tam;i++){
+
+        printf("\nInforme um numero: ");
+        scanf("%i", &numeros[i]);
+    }
+
+    MULT3(numeros);
+
+    DIVISOR8(numeros);
+
+
+
+    return 0;
+}
+
+void MULT3 (int numeros[]){
+ int i, contmult3=0;
+
+for(i=0;i<tam;i++){
+ if(numeros[i]%3==0){
+    contmult3++;
+ }
+}
+ printf("\nMultiplos de 3: %d", contmult3);
+}
+
+void DIVISOR8(int numeros[]){
+
+ int i, contdiv8=0;
+
+for(i=0;i<tam;i++){
+ if(8%numeros[i]==0){
+    contdiv8++;
+ }
+}
+ printf("\nDivisores de 8: %d\n", contdiv8);
+}
+
+
+
+
+
+
+Q3
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+float DESCONTO (float);
+void  PARCELAS   (int);
+void VALOR_PARCELAS(float, float, int);
+
+int main()
+{
+    setlocale (LC_ALL, "portuguese");
+    int FormPag;
+    float Valor, Desconto;
+
+    printf("Informe o valor:\n-> ");
+    scanf("%f",&Valor);
+    //DESCONTO(Valor);
+
+    printf("\nFormas de pagamento:\n1-À vista\n2-Cheque\n3-Cartão\n");
+    printf("-> ");
+    scanf("%d",&FormPag);
+    PARCELAS(FormPag);
+
+    Desconto = DESCONTO(Valor);
+    VALOR_PARCELAS(Valor, Desconto, FormPag);
+
+    return 0;
+}
+
+float DESCONTO (float Valor){
+float ValorFinal, Desconto;
+
+if ((Valor >= 200.00) && (Valor < 400.00)){
+    Desconto = (Valor * 0.05);
+    ValorFinal = Valor - Desconto;
+    printf("Valor com desconto: %.2f\n", ValorFinal);
+
+}else if (Valor >= 400.00){
+    Desconto = (Valor * 0.10);
+    ValorFinal = Valor - Desconto;
+    printf("Valor com desconto: %.2f\n", ValorFinal);
+
+}else{
+    printf("\n\nNão há desconto.\n\n");
+}
+
+return Desconto;
+}
+
+void PARCELAS(int FormPag){
+
+if (FormPag == 1){
+    printf("\nParcela única.\n");
+}
+if (FormPag == 2){
+    printf("\nParcelado em até 2x.\n");
+}
+if (FormPag == 3){
+    printf("\nParcelado em até 3x.\n");
+}
+
+}
+
+void VALOR_PARCELAS(float Valor, float Desconto, int FormPag){
+float ValorParcelas;
+int op;
+
+if (FormPag == 2 || FormPag == 3){
+printf("Deseja parcelar em quantas vezes?\n-> ");
+scanf("%d", &op);
+ValorParcelas = (Valor - Desconto) / op;
+}
+else {
+ValorParcelas = (Valor - Desconto) / FormPag;
+}
+
+
+
+printf("\nO valor de cada parcela é de: R$%.2f \n", ValorParcelas);
+
+}
+
+
+
+
+Q4
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void calculaComissao(int);
+void calculaBonus(int);
+
+int main()
+{
+int QuantVenda, i, Abadas=3000;
+
+    for(i=0;i<5;i++){
+    printf("Comissario %d", i+1);
+    printf("\nDigite o total  de vendas:\n-> ");
+    scanf("%d", &QuantVenda);
+
+    calculaComissao(QuantVenda);
+    calculaBonus(QuantVenda);
+    printf("\n");
+    Abadas -= QuantVenda;
+    }
+    printf("\nQuantidade de abadas restantes: %d\n\n", Abadas);
+
+    return 0;
+}
+
+void calculaComissao(int QuantVenda){
+
+    float ValorVendido, ValorComissao;
+
+    ValorVendido = 80.00 * QuantVenda;
+    ValorComissao = ValorVendido * 0.07;
+
+    if(QuantVenda>50){
+        ValorComissao += 70.00;
+        printf("Valor da comissao sem bonus: R$%.2f\n", ValorComissao - 70.00);
+        printf("Valor da comissao com bonus: R$%.2f\n", ValorComissao);
+
+    }
+    else{
+        printf("Valor da comissao: R$%.2f\n", ValorComissao);
+    }
+
+
+
+}
+
+void calculaBonus   (int QuantVenda){
+    if(QuantVenda>50){
+        printf("\nRecebeu um bonus de R$70.00\n");
+    }
+    else {
+        printf("\nNao recebeu bonus.\n");
+    }
+}
+
+
+
+Q5
+
+
+#include <stdio.h>
+
+
+            int main(void){
+            float calculaTaxas(float,int);
+            int x,i;
+            float SomaHoras=0,SomaTaxas=0,SomaTaxas1,SomaTaxas2,SomaTaxas3;
+
+            float cliente1,cliente2,cliente3;
+
+            printf("Digite quantas horas o cliente 1 estacionou: \n");
+            scanf("%f",&cliente1);
+
+            printf("\nDigite quantas horas o cliente 2 estacionou: \n");
+            scanf("%f",&cliente2);
+
+            printf("\nDigite quantas horas o cliente 3 estacionou: \n");
+            scanf("%f",&cliente3);
+
+            printf("Carro  Hora    Taxa\n");
+            x=1;
+            SomaTaxas1=calculaTaxas(cliente1,x);
+            x=2;
+            SomaTaxas2=calculaTaxas(cliente2,x);
+            x=3;
+            SomaTaxas3=calculaTaxas(cliente3,x);
+
+
+                SomaHoras=cliente3+cliente2+cliente1;
+                SomaTaxas=SomaTaxas1+SomaTaxas2+SomaTaxas3;
+
+            printf("Total= %.1f    %.2f",SomaHoras,SomaTaxas);
+
+            return 0;
+            }
+
+            float calculaTaxas(float horas,int x){
+            float Pagar;
+
+            if(horas<=3){
+
+                Pagar=2;
+
+                printf("% i     %.1f   %.2f\n",x,horas,Pagar);
+
+                return Pagar;
+
+            }
+
+            else if(horas>3 && horas<24){
+
+                Pagar=2+((horas-3)*0.5);
+                printf("% i     %.1f    %.2f\n",x,horas,Pagar);
+
+                return Pagar;
+
+            }
+
+            else if(horas==24){
+
+                Pagar=10;
+                printf("% i     %.1f    %.2f\n",x,horas,Pagar);
+
+                return Pagar;
+
+            }
+
+            }
+
+
+Q6
+
+
+
+#include <stdio.h>
+#include <math.h>
+
+        int main(void){
+
+        float Numeros[10]={0},NumerosArredondados[10]={0};
+        int i;
+
+        for(i=0;i<10;i++){
+            printf("Digite o valor que voce quer arredondar: ");
+            scanf("%f",&Numeros[i]);
+            NumerosArredondados[i]=floor(Numeros[i] + 0.5);
+            printf("\nO valor era %.1f e ficou %.1f\n",Numeros[i],NumerosArredondados[i]);
+
+        }
+
+        return 0;
+
+
+        }
+
+
+Q7
+
+
+
+#include <stdio.h>
+
+
+            int main(){
+
+            int hora, minutos, segundos;
+            int relogio(int hora,int minutos,int segundos);
+            int minutos1;
+
+
+            printf("Digite a hora: ");
+            scanf("%i",&hora);
+
+            printf("Digite os minutos: ");
+            scanf("%i",&minutos);
+            printf("Digite os segundos: ");
+            scanf("%i",&segundos);
+
+            if(segundos>=60){
+               int segundos1;
+               segundos1=segundos/60;
+                minutos+=segundos1;
+            }
+            if(minutos>=60){
+
+                minutos1=minutos/60;
+                hora+=minutos1;
+
+            }
+            if(hora>12){
+                hora=minutos1-1;
+            }
+
+
+
+            printf("Se passaram %i segundos desde as %i !!!",relogio(hora,minutos,segundos),hora);
+
+
+            }
+
+        int relogio(int hora,int minutos,int segundos){
+
+        minutos=minutos%60;
+
+        segundos=segundos+(minutos*60);
+
+        return segundos;
+
+        }
+
+
+
+
+
+Q9
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int pontosQualif (int);
+
+int main()
+{
+    int media=0;
+    int pontosQualif(int);
+
+    printf("Informe a media do aluno:\n->");
+    scanf("%d", &media);
+
+    if(media>=60 && media<=100){
+    printf("Sua nota final de qualis eh: %d",pontosQualif(media));
+    }else{
+    printf("\nNota invalida.\n");
+    }
+
+    return 0;
+}
+
+int pontosQualif(int media){
+
+     if(media>=90 && media<=100){
+    return 4;
+}
+else if(media>=80 && media<=89){
+    return 3;
+}
+else if(media>=70 && media<=79){
+    return 2;
+}
+else if(media>=60 && media<=69){
+    return 1;
+ }
+}
+
+
+
+
+Q10
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+int main()
+{
+    srand(time(NULL));
+
+    int num1, num2, resposta, opcao;
+
+
+    do{
+       num1 = rand()%10;
+       num2 = rand()%10;
+
+      while(resposta!=(num1*num2)){
+
+       printf("Quanto eh %d x %d ? ", num1, num2);
+       scanf("%d",&resposta);
+
+       if (resposta == (num1*num2)){
+        printf("\nVoce acertou! :D\n\n");
+       }
+       else{
+        printf("\nTente novamente! :/\n\n");
+       }
+      }
+
+      printf("Deseja continuar a brincar???\nDigite 0 para sair \nOu qualquer outro numero para continuar!\n");
+      scanf("%d",&opcao);
+    }while(opcao!=0);
+
+    return 0;
+}
+

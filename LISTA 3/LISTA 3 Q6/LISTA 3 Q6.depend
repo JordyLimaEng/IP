@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1457810958 source:f:\ufpb - estudos\engenharia da computaÇÃo\ip\lista 3\lista 3 q6\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+

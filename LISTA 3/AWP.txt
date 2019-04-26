@@ -1,0 +1,378 @@
+// incluindo as bibliotecas
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+// definindo as constantes
+#define TOTALTENTATIVAS1 20
+#define TOTALTENTATIVAS2 15
+#define TOTALTENTATIVAS3 6
+#define PONTOSINICIAIS 1000
+
+int main() {
+
+	// imprimindo cabecalho bonito do jogo
+	printf("\n\n");
+	printf("          P  /_\\  P                              \n");
+	printf("         /_\\_|_|_/_\\                            \n");
+	printf("     n_n | ||. .|| | n_n         Bem vindo ao     \n");
+	printf("     |_|_|nnnn nnnn|_|_|     Jogo de Adivinhação! \n");
+	printf("    |\" \"  |  |_|  |\"  \" |                     \n");
+	printf("    |_____| ' _ ' |_____|                         \n");
+	printf("          \\__|_|__/                              \n");
+	printf("\n\n");
+
+	// declarando variaveis que serao usadas mais a frente
+	int chute;
+	int acertou;
+	int nivel;
+	int totaldetentativas;
+	int numerosecreto;
+	int de,ate;
+
+	// definindo a quantidade de pontos inicial
+	double pontos = PONTOSINICIAIS;
+
+	// gerando um numero secreto aleatorio
+	int op;
+	int guardar;
+
+	do{
+
+	printf("Escolhe os limites para gerar o numero secreto:\n");
+	scanf("%i",&de);
+	scanf("%i",&ate);
+
+	srand(time(NULL));
+	numerosecreto = de + rand() % ate;
+
+	// escolhendo o nivel de dificuldade
+	printf("Qual o nível de dificuldade?\n");
+	printf("(1) Fácil (2) Médio (3) Difícil\n\n");
+	printf("Escolha: ");
+
+	scanf("%d", &nivel);
+
+	switch(nivel) {
+		case 1:
+			totaldetentativas=TOTALTENTATIVAS1;
+			break;
+		case 2:
+			totaldetentativas=TOTALTENTATIVAS2;
+			break;
+		default:
+			totaldetentativas=TOTALTENTATIVAS3;
+			break;
+	}
+
+	// loop principal do jogo
+	int i;
+	for(i = 1; i <= totaldetentativas; i++) {
+
+		printf("-> Tentativa %d de %d\n", i, totaldetentativas);
+
+		printf("Chute um número: ");
+		scanf("%d", &chute);
+		if(chute==guardar){
+
+            printf("Voce nao pode chutar o mesmo numero duas vezes!!");
+            i--;
+            continue;
+
+		}
+        guardar=chute;
+
+
+
+		// tratando chute de numero negativo
+		if(chute < 0) {
+			printf("Você não pode chutar números negativos\n");
+			i--;
+			continue;
+		}
+
+		// verifica se acertou, foi maior ou menor
+		acertou = chute == numerosecreto;
+
+		if(acertou) {
+			break;
+		} else if(chute > numerosecreto) {
+			printf("\nSeu chute foi maior do que o número secreto!\n\n");
+		} else {
+			printf("\nSeu chute foi menor do que o número secreto!\n\n");
+		}
+
+		// calcula a quantidade de pontos
+		double pontosperdidos = abs(chute - numerosecreto) / 2.0;
+		pontos = pontos - pontosperdidos;
+	}
+
+	// imprimindo mensagem de vitoria ou derrota
+	printf("\n");
+	if(acertou) {
+		printf("             OOOOOOOOOOO               \n");
+		printf("         OOOOOOOOOOOOOOOOOOO           \n");
+		printf("      OOOOOO  OOOOOOOOO  OOOOOO        \n");
+		printf("    OOOOOO      OOOOO      OOOOOO      \n");
+		printf("  OOOOOOOO  #   OOOOO  #   OOOOOOOO    \n");
+		printf(" OOOOOOOOOO    OOOOOOO    OOOOOOOOOO   \n");
+		printf("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO  \n");
+		printf("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO  \n");
+		printf("OOOO  OOOOOOOOOOOOOOOOOOOOOOOOO  OOOO  \n");
+		printf(" OOOO  OOOOOOOOOOOOOOOOOOOOOOO  OOOO   \n");
+		printf("  OOOO   OOOOOOOOOOOOOOOOOOOO  OOOO    \n");
+		printf("    OOOOO   OOOOOOOOOOOOOOO   OOOO     \n");
+		printf("      OOOOOO   OOOOOOOOO   OOOOOO      \n");
+		printf("         OOOOOO         OOOOOO         \n");
+		printf("             OOOOOOOOOOOO              \n");
+		printf("\nParabéns! Você acertou!\n");
+		printf("Você fez %.2f pontos. Até a próxima!\n\n", pontos);
+	} else {
+
+        printf("       \\|/ ____ \\|/    \n");
+        printf("        @~/ ,. \\~@      \n");
+        printf("       /_( \\__/ )_\\    \n");
+        printf("          \\__U_/        \n");
+
+		printf("\nVocê perdeu! Tente novamente!\n\n");
+	}
+
+	printf("Deseja jogar novamente?\n");
+	scanf("%i",&op);
+
+	}while(op==1);
+
+
+}
+
+#include <stdio.h>
+
+
+    int main() {
+
+
+        int i;
+
+        for(i=2;i<50;i=i+2){
+
+            if(i%2==0 && i!=2){
+
+            printf("O numero %i eh par\n",i);
+            }
+
+        }
+
+
+
+
+
+
+
+
+    }
+#include <stdio.h>
+
+
+    int main(){
+
+    int contador,soma=0;
+
+    for(contador=1;contador<=100;contador++){
+
+            printf("%i + ",contador);
+
+            soma=contador+soma;
+
+
+
+
+    }
+
+    printf("\n\n\n\n%i\n",soma);
+
+
+
+
+
+
+
+
+
+    }
+#include <stdio.h>
+
+
+    int main(){
+
+        int num,contador,valor;
+
+
+        printf("Por favor digite um numero inteiro para a tabuada ser gerada:\n");
+            scanf("%i",&num);
+
+
+
+
+        for(contador=1;contador<=10;contador++){
+
+            valor=contador*num;
+            printf("%i x %i == %i\n",num,contador,valor);
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+#include <stdio.h>
+
+
+    int main(){
+
+
+    float num1,num2;
+    int op;
+
+    printf("            CALCULADORA");
+    printf("\n                Menu\nDigite dois numeros e no final o numero da operacao");
+    printf("\n1 para soma, 2 para subtracao, 3 para multiplicacao e 4 para divisao");
+
+    printf("\n\nDigite 1º numero:");
+    scanf("%f",&num1);
+
+    printf("\nDigite 2º numero:");
+    scanf("%f",&num2);
+
+    printf("\nDigite a opracao:");
+    scanf("%i",&op);
+
+
+        switch(op){
+
+        case 1:
+            printf("A soma eh = %f",num1+num2);
+            break;
+
+        case 2:
+            printf("A soma eh = %f",num1-num2);
+            break;
+
+        case 3:
+            printf("A soma eh = %f",num1*num2);
+            break;
+
+        case 4:
+            if(num2!=0){
+            printf("A soma eh = %.2f",num1/num2);}
+            else{
+                printf("Nao se pode dividir um numero por 0, por favor reinicie o programa!");
+            }
+            break;
+
+        default:
+            printf("Reinicie o programa!!!");
+
+        }
+
+
+
+
+    }
+
+    #include <stdio.h>
+
+
+    int main(){
+
+        int fat;
+        int funcaoFat(int);
+
+        printf("Digite um numero para obter seu fatorial:");
+        scanf("%i",&fat);
+
+        if(fat<0){printf("Por favor reinicie o programa");
+
+        }
+        else{
+       printf("\n\nO valor eh: %i",funcaoFat(fat));
+        }
+
+
+
+    }
+
+
+    int funcaoFat(int x){
+
+    if(x==0){
+    return 1;}
+    return x*funcaoFat(x-1);
+
+
+
+    }
+
+#include <stdio.h>
+
+
+    int main(){
+
+
+    float num1,num2,num3;
+
+    printf("Digite 3 numeros para serem colocados em ordem crescente");
+    printf("\n1 numero:");
+    scanf("%f",&num1);
+    printf("\n2 numero:");
+    scanf("%f",&num2);
+    printf("\n3 numero:");
+    scanf("%f",&num3);
+
+    if(num1>num2 && num1>num3){
+
+        if (num2>num3){
+            printf("%.2f < %.2f < %.2f",num3,num2,num1);
+        }
+        else {
+            printf("%.2f < %.2f < %.2f",num2,num3,num1);
+        }
+    }
+
+    else if(num2>num1 && num2>num3){
+
+        if (num1>num3){
+            printf("%.2f < %.2f < %.2f",num3,num1,num2);
+        }
+        else {
+            printf("%.2f < %.2f < %.2f",num1,num3,num2);
+        }
+    }
+    else if(num3>num1 && num3>num2){
+
+
+        if (num1>num2){
+            printf("%.2f < %.2f < %.2f",num2,num1,num3);
+        }
+        else {
+            printf("%.2f < %.2f < %.2f",num1,num2,num3);
+        }
+
+    }
+
+
+
+
+
+
+    }
+

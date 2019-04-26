@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1448230118 source:f:\ufpb - estudos\engenharia da computaÇÃo\ip\lista 4 - parte 2\lista 4 - q17\main.c
+	<stdlib.h>
+	<time.h>
+	<stdio.h>
+

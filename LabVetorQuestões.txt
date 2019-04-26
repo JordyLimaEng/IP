@@ -1,0 +1,203 @@
+
+Aluna: Natália Caroline Guedes Barreto 
+Matricula: 11409527
+
+Q1
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+
+int main() {
+	setlocale (LC_ALL, "Portuguese");
+	
+	int Numeros [30], n, Num;
+	
+	for(n=0;n<30;n++){
+		printf("Digite um Número inteiro: ");
+		scanf("%d",&Num);
+		Numeros [n] = Num;
+	}
+	printf("Primeiro: %d Quinto: %d", Numeros[0], Numeros[4]);
+	
+	
+	
+	return 0;
+}
+
+
+
+
+
+
+
+
+Q2
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+
+int main() {
+	setlocale (LC_ALL, "Portuguese");
+	
+	int Numeros [10], n, Num;
+	
+	for(n=0;n<10;n++){
+		printf("Digite um Número inteiro: ");
+		scanf("%d",&Num);
+		Numeros [n] = Num;
+	}
+	for(n=9;n>=0;n--){
+	printf("%d \n", Numeros[n]);
+	}
+	
+	
+	
+	return 0;
+}
+
+
+
+
+
+
+Q3
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+
+int main() {
+	setlocale (LC_ALL, "Portuguese");
+	
+	int NumerosA [40], NumerosB [40], Count=0, n=0;
+	
+	for(Count=0;Count<40;Count++){
+	NumerosA [Count] = n;
+	n++;	
+	}
+	
+	for(Count=0;Count<40;Count++){
+	if (Count % 2 == 0){
+		NumerosB [Count] = NumerosA [Count];
+	}else if (Count % 2 != 0){
+		NumerosB [Count] = NumerosA [Count] * 3;
+	 }
+	 
+    }
+	
+	for(Count=0;Count<40;Count++){
+		printf("%d    %d\n", NumerosA [Count],NumerosB [Count]);
+	}
+	
+	return 0;
+}
+
+
+
+
+
+
+Q4
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <time.h>
+
+int main() {
+	setlocale (LC_ALL, "Portuguese");
+	
+	int Numeros [50], Count=0;
+	srand (time(0));
+	
+	for(Count=1;Count<=50;Count++){
+	Numeros [Count] = rand() % 10000;
+		
+	if (Numeros [Count] % 2 == 0){
+		printf("Posição %d \tNúmero: %d\n", Count, Numeros[Count]);
+    }  
+    
+	Count++;	
+	}
+
+
+	return 0;
+}
+
+
+
+Q5
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <time.h>
+
+int main() {
+	setlocale (LC_ALL, "Portuguese");
+
+	int Jogador1 [100], Num, Count, NumSecreto, acertou;
+	srand (time(0));
+
+ for(Count=0;Count<100;Count++){
+	Jogador1 [Count] = rand() % 10;
+	}
+
+	NumSecreto = Jogador1 [rand() % 100];
+
+ do{
+    printf("Digite um número aleatório entre 0 e 10: ");
+	scanf("%d", &Num);
+
+    if (Num==NumSecreto){
+        printf("\n\tVocê acertou!!\n\n");
+    } else{
+        printf("\n\tVocê errou!!\n\n"  );
+     }
+
+   }while(Num!=NumSecreto);
+
+	return 0;
+	}
+
+
+
+Q6
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <time.h>
+#define TAMANHO 10
+
+int main() {
+	setlocale (LC_ALL, "Portuguese");
+
+	int Numeros , Count;
+	int frequencia[TAMANHO ] = { 0 };
+
+	srand (time( NULL));
+
+	for(Count=0;Count<100;Count++){
+	Numeros = rand() % 10;
+	++frequencia [ Numeros ];
+	}
+
+	printf( "%s%17s\n", "Numeros", "Frequencia" );
+
+        for ( Numeros = 0; Numeros < TAMANHO ; Numeros++ ) {
+            printf( "%4d%17d\n", Numeros + 1, frequencia [ Numeros ] );
+            }
+return 0;
+	}
+
+

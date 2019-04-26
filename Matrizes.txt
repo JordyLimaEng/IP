@@ -1,0 +1,135 @@
+CURSO DE C
+
+ 
+
+Matrizes
+
+Matrizes bidimensionais
+Matrizes de strings
+Matrizes multidimensionais
+Inicializa??o
+Inicializa??o sem especifica??o de tamanho
+
+Matrizes bidimensionais
+
+J? vimos como declarar matrizes unidimensionais (vetores). Vamos tratar agora de matrizes bidimensionais. A forma geral da declara??o de uma matriz bidimensional ? muito parecida com a declara??o de um vetor:
+
+ tipo_da_vari?vel nome_da_vari?vel [altura][largura];
+
+ ? muito importante ressaltar que, nesta estrutura, o ?ndice da esquerda indexa as linhas e o da direita indexa as colunas. Quando vamos preencher ou ler uma matriz no C o ?ndice mais ? direita varia mais rapidamente que o ?ndice ? esquerda. Mais uma vez ? bom lembrar que, na linguagem C, os ?ndices variam de zero ao valor declarado, menos um; mas o C n?o vai verificar isto para o usu?rio. Manter os ?ndices na faixa permitida ? tarefa do programador. Abaixo damos um exemplo do uso de uma matriz:
+
+ 
+
+#include <stdio.h>
+int main ()
+{
+int mtrx [20][10];
+int i,j,count;
+count=1;
+for (i=0;i<20;i++)
+  	for (j=0;j<10;j++)
+  	{
+        	mtrx[i][j]=count;
+                count++;
+        }
+return(0);
+}
+No exemplo acima, a matriz mtrx ? preenchida, sequencialmente por linhas, com os n?meros de 1 a 200. Voc? deve entender o funcionamento do programa acima antes de prosseguir.
+
+ 
+
+Matrizes de strings
+
+Matrizes de strings s?o matrizes bidimensionais. Imagine uma string. Ela ? um vetor. Se fizermos um vetor de strings estaremos fazendo uma lista de vetores. Esta estrutura ? uma matriz bidimensional de chars. Podemos ver a forma geral de uma matriz de strings como sendo:
+
+ char nome_da_vari?vel [num_de_strings][compr_das_strings];
+
+ A? surge a pergunta: como acessar uma string individual? F?cil. ? s? usar apenas o primeiro ?ndice. Ent?o, para acessar uma determinada string fa?a:
+
+ nome_da_vari?vel [?ndice]
+
+ Aqui est? um exemplo de um programa que l? 5 strings e as exibe na tela:
+
+ 
+
+#include <stdio.h>
+int main ()
+{
+	char strings [5][100];
+	int count;
+	for (count=0;count<5;count++)
+        {
+        	printf ("\n\nDigite uma string: ");
+        	gets (strings[count]);
+        }
+	printf ("\n\n\nAs strings que voce digitou foram:\n\n");
+	for (count=0;count<5;count++)
+                printf ("%s\n",strings[count]);
+        return(0);
+}
+Matrizes multidimensionais
+
+O uso de matrizes multidimensionais na linguagem C ? simples. Sua forma geral ?:
+
+ tipo_da_vari?vel nome_da_vari?vel [tam1][tam2] ... [tamN];
+
+ Uma matriz N-dimensional funciona basicamente como outros tipos de matrizes. Basta lembrar que o ?ndice que varia mais rapidamente ? o ?ndice mais ? direita.
+
+ 
+
+Inicializa??o
+
+Podemos inicializar matrizes, assim como podemos inicializar vari?veis. A forma geral de uma matriz como inicializa??o ?:
+
+ tipo_da_vari?vel nome_da_vari?vel [tam1][tam2] ... [tamN] = {lista_de_valores};
+
+ A lista de valores ? composta por valores (do mesmo tipo da vari?vel) separados por v?rgula. Os valores devem ser dados na ordem em que ser?o colocados na matriz. Abaixo vemos alguns exemplos de inicializa??es de matrizes:
+
+ 
+
+        float vect [6] = { 1.3, 4.5, 2.7, 4.1, 0.0, 100.1 };
+        int matrx [3][4] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+        char str [10] = { 'J', 'o', 'a', 'o', '\0' };
+        char str [10] = "Joao";
+        char str_vect [3][10] = { "Joao", "Maria", "Jose" };
+O primeiro demonstra inicializa??o de vetores. O segundo exemplo demonstra a inicializa??o de matrizes multidimensionais, onde matrx est? sendo inicializada com 1, 2, 3 e 4 em sua primeira linha, 5, 6, 7 e 8 na segunda linha e 9, 10, 11 e 12 na ?ltima linha. No terceiro exemplo vemos como inicializar uma string e, no quarto exemplo, um modo mais compacto de inicializar uma string. O quinto exemplo combina as duas t?cnicas para inicializar um vetor de strings. Repare que devemos incluir o ; no final da inicializa??o.
+
+ 
+
+Inicializa??o sem especifica??o de tamanho
+
+Podemos, em alguns casos, inicializar matrizes das quais n?o sabemos o tamanho a priori. O compilador C vai, neste caso verificar o tamanho do que voc? declarou e considerar como sendo o tamanho da matriz. Isto ocorre na hora da compila??o e n?o poder? mais ser mudado durante o programa, sendo muito ?til, por exemplo, quando vamos inicializar uma string e n?o queremos contar quantos caracteres ser?o necess?rios. Alguns exemplos:  
+
+                char mess [] = "Linguagem C: flexibilidade e poder.";
+                int matrx [][2] = { 1,2,2,4,3,6,4,8,5,10 };
+No primeiro exemplo, a string mess ter? tamanho 36. Repare que o artif?cio para realizar a inicializa??o sem especifica??o de tamanho ? n?o especificar o tamanho! No segundo exemplo o valor n?o especificado ser? 5.
+
+ 
+
+AUTO AVALIA??O
+
+Veja como voc? est?.
+
+O que imprime o programa a seguir? Tente entend?-lo e responder. A seguir, execute-o e comprove o resultado. 
+
+# include <stdio.h> 
+int main() 
+{ 
+    int t, i, M[3][4]; 
+    for (t=0; t<3; ++t) 
+        for (i=0; i<4; ++i) 
+            M[t][i] = (t*4)+i+1; 
+
+    for (t=0; t<3; ++t) 
+    { 
+        for (i=0; i<4; ++i) 
+            printf ("%3d ", M[t][i]); 
+        printf ("\n"); 
+    } 
+    return(0);
+}
+
+ P?gina Anterior ?ndice da Aula
+
+Curso de C do CPDEE/UFMG - 1996 - 1999
+

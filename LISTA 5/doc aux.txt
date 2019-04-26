@@ -1,0 +1,9 @@
+typedef struct Aluno{
+    int matricula;
+    char nome[50];
+    int ano;
+    int semestre;
+    float media;
+    char status;
+    TNota notas[3];
+}TAluno;
